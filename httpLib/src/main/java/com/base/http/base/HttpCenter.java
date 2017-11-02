@@ -34,8 +34,8 @@ public class HttpCenter {
         BaseProfile.mContext = context;
     }
 
-    public void requestInfo(RequestParams params, ActionCallback callback){
-        mAction.sendRequest(params, callback);
+    public void startRequest(RequestParams params, ActionCallback callback){
+        mAction.startRequest(params,callback);
     }
 
 }

@@ -6,10 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <Button
-        android:id="@+id/btn_test"
+        android:id="@+id/btn_request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="测试网络请求"/>
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消请求"/>
     <TextView
         android:id="@+id/text_result"
         android:layout_width="match_parent"

@@ -8,6 +8,5 @@ import com.base.http.http.RequestParams;
  */
 
 public interface AppAction<T> {
-    void sendRequest(RequestParams requestParams, ActionCallback<T> callback);
-
+    void startRequest(RequestParams requestParams, final ActionCallback callback);
 }

@@ -46,9 +46,6 @@ public class URLContainer {
     private static final String REBINDING = "re-binding";
     private static final String UPDATE_PERSONAL ="modify-personinfo";
 
-
-
-
     public static final String getTestGetURL() {
         return TEST_GET;
     }

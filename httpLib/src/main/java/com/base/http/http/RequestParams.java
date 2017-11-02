@@ -14,18 +14,6 @@ import java.util.Map;
 public class RequestParams {
     private Map<String,String> paramsMap = new HashMap<>();
 
-    public void setParamsValue(String key, String value){
-        paramsMap.put(key,value);
-    }
-
-    public String getParamsValue(String key){
-        return paramsMap.get(key);
-    }
-
-    public Map<String,String> getParamsMap(){
-        return paramsMap;
-    }
-
     public boolean isValidate() {
         List<String> paramsKey = new ArrayList<>(paramsMap.keySet());
         for(int i=0;i<paramsKey.size();i++){
@@ -36,12 +24,32 @@ public class RequestParams {
         return true;
     }
 
+    public Map<String,String> getParamsMap(){
+        return paramsMap;
+    }
+
+    public void setParamsValue(String key, String value){
+        paramsMap.put(key,value);
+    }
+
+    public String getParamsValue(String key){
+        return paramsMap.get(key);
+    }
+
     public void setURL(String url){
         paramsMap.put("url",url);
     }
 
     public String getURL(){
         return paramsMap.get("url");
+    }
+
+    public void setMethod(String method){
+        paramsMap.put("method",method);
+    }
+
+    public String getMethod(){
+        return paramsMap.get("method");
     }
 
     @Override
