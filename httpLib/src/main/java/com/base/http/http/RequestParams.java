@@ -36,6 +36,14 @@ public class RequestParams {
         return true;
     }
 
+    public void setURL(String url){
+        paramsMap.put("url",url);
+    }
+
+    public String getURL(){
+        return paramsMap.get("url");
+    }
+
     @Override
     public String toString() {
         return paramsMap.toString();

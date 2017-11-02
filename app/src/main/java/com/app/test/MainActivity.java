@@ -28,11 +28,9 @@ public class MainActivity extends AppCompatActivity {
         mBtnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 HttpCenter manager = HttpCenter.getInstance();
-                manager.init(MainActivity.this);
-
                 RequestParams params = new RequestParams();
+                params.setURL(URLContainer.getDeviceListURL());
                 params.setParamsValue("phone","13896107262");
 
                 manager.requestInfo(params, new ActionCallback<List<DeviceInfo>>() {

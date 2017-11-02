@@ -60,12 +60,13 @@ public class HttpEngine {
             baos.close();
             connection.disconnect();
 
-            String result = "";
-            if(requestMethod.equals(REQUEST_METHOD_GET)){
-                result ="{\"code\":\"1001\",\"msg\":\"ok\",\"data\":[{\"_id\":\"59b7a98e421aa911847a0392\",\"createdAt\":\"2017-09-12T17:31:58.794Z\",\"desc\":\"ViewStub学习\",\"publishedAt\":\"2017-09-14T16:36:51.63Z\",\"source\":\"web\",\"type\":\"Android\",\"url\":\"http://rkhcy.github.io/2017/09/12/ViewStub%E5%AD%A6%E4%B9%A0/\",\"used\":true,\"who\":\"HuYounger\"},{\"_id\":\"59b7a98e421aa911847a0392\",\"createdAt\":\"2017-09-12T17:31:58.794Z\",\"desc\":\"ViewStub学习\",\"publishedAt\":\"2017-09-14T16:36:51.63Z\",\"source\":\"web\",\"type\":\"Android\",\"url\":\"http://rkhcy.github.io/2017/09/12/ViewStub%E5%AD%A6%E4%B9%A0/\",\"used\":true,\"who\":\"HuYounger\"}]}";
-            }else if(requestMethod.equals(REQUEST_METHOD_POST)){
-                result =new String(baos.toByteArray());
-            }
+//            String result = "";
+//            if(requestMethod.equals(REQUEST_METHOD_GET)){
+//                result ="{\"code\":\"1001\",\"msg\":\"ok\",\"data\":[{\"_id\":\"59b7a98e421aa911847a0392\",\"createdAt\":\"2017-09-12T17:31:58.794Z\",\"desc\":\"ViewStub学习\",\"publishedAt\":\"2017-09-14T16:36:51.63Z\",\"source\":\"web\",\"type\":\"Android\",\"url\":\"http://rkhcy.github.io/2017/09/12/ViewStub%E5%AD%A6%E4%B9%A0/\",\"used\":true,\"who\":\"HuYounger\"},{\"_id\":\"59b7a98e421aa911847a0392\",\"createdAt\":\"2017-09-12T17:31:58.794Z\",\"desc\":\"ViewStub学习\",\"publishedAt\":\"2017-09-14T16:36:51.63Z\",\"source\":\"web\",\"type\":\"Android\",\"url\":\"http://rkhcy.github.io/2017/09/12/ViewStub%E5%AD%A6%E4%B9%A0/\",\"used\":true,\"who\":\"HuYounger\"}]}";
+//            }else if(requestMethod.equals(REQUEST_METHOD_POST)){
+//                result =new String(baos.toByteArray());
+//            }
+            String result = new String(baos.toByteArray());
             // 打印出结果
             Logger.d(TAG, "response: " + result);
             Gson gson = new Gson();

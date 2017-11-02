@@ -9,5 +9,6 @@ import com.base.http.http.RequestParams;
  */
 
 public interface Api<T> {
-    ApiResponse<T> getRequestInfo(RequestParams params);
+    ApiResponse<T> postRequest(RequestParams params);
+    ApiResponse<T> getRequest(RequestParams params);
 }

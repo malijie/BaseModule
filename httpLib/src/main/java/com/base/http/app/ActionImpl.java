@@ -70,7 +70,7 @@ public class ActionImpl implements AppAction {
                 new AsyncTask<Void, Void, ApiResponse>() {
                     @Override
                     protected ApiResponse doInBackground(Void... params) {
-                        return api.getRequestInfo(requestParams);
+                        return api.postRequest(requestParams);
                     }
                     @Override
                     protected void onPostExecute(ApiResponse apiResponse) {
