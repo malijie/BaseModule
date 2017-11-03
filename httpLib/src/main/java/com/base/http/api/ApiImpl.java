@@ -42,4 +42,9 @@ public class ApiImpl implements Api {
             return new ApiResponse(ResultEnum.FAILED.getCode(),"error", "参数错误");
         }
     }
+
+    @Override
+    public ApiResponse downloadRequest(RequestParams params) {
+        return null;
+    }
 }

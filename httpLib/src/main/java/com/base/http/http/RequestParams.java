@@ -44,12 +44,12 @@ public class RequestParams {
         return paramsMap.get("url");
     }
 
-    public void setMethod(String method){
-        paramsMap.put("method",method);
+    public void setAction(String method){
+        paramsMap.put("action",method);
     }
 
-    public String getMethod(){
-        return paramsMap.get("method");
+    public String getAction(){
+        return paramsMap.get("action");
     }
 
     @Override

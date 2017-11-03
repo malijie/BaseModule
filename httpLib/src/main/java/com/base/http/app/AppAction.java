@@ -8,5 +8,6 @@ import com.base.http.http.RequestParams;
  */
 
 public interface AppAction<T> {
-    void startRequest(RequestParams requestParams, final ActionCallback callback);
+    void startRequest(RequestParams requestParams, ActionCallback callback);
+    void download(RequestParams requestParams,DownloadCallback callback);
 }

@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
                 RequestParams params = new RequestParams();
                 params.setURL(URLContainer.getDeviceListURL());
-                params.setMethod("POST");
+                params.setAction("POST");
                 params.setParamsValue("phone","13896107262");
 
                 center.startRequest(params, new ActionCallback<List<DeviceInfo>>() {

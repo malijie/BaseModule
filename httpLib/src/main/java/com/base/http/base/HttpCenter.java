@@ -5,6 +5,7 @@ import android.content.Context;
 import com.base.http.app.ActionCallback;
 import com.base.http.app.ActionImpl;
 import com.base.http.app.AppAction;
+import com.base.http.app.DownloadCallback;
 import com.base.http.http.RequestParams;
 
 /**
@@ -36,6 +37,10 @@ public class HttpCenter {
 
     public void startRequest(RequestParams params, ActionCallback callback){
         mAction.startRequest(params,callback);
+    }
+
+    public void download(RequestParams params, DownloadCallback callback){
+        mAction.download(params,callback);
     }
 
 }
