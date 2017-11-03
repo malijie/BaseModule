@@ -68,7 +68,7 @@ public class DefaultThreadPool {
     /**
      * 关闭，立即关闭，并挂起所有正在执行的线程，不接受新任务
      */
-    public  void shutdownRightNow() {
+    public void shutdownRightNow() {
         if (DefaultThreadPool.pool != null) {
             DefaultThreadPool.pool.shutdownNow();
             try {

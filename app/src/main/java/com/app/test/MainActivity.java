@@ -31,24 +31,23 @@ public class MainActivity extends AppCompatActivity {
         mBtnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            RequestParams params = new RequestParams();
+            params.setURL(URLContainer.getDeviceListURL());
+            params.setAction("POST");
+            params.setParamsValue("phone","13896107262");
 
-                RequestParams params = new RequestParams();
-                params.setURL(URLContainer.getDeviceListURL());
-                params.setAction("POST");
-                params.setParamsValue("phone","13896107262");
+            center.startRequest(params, new ActionCallback<List<DeviceInfo>>() {
+                @Override
+                public void onSuccess(List<DeviceInfo> data) {
+                    mTxtResult.setText("result：" + data);
+                    Logger.mlj("result=" + data);
+                }
 
-                center.startRequest(params, new ActionCallback<List<DeviceInfo>>() {
-                    @Override
-                    public void onSuccess(List<DeviceInfo> data) {
-                        mTxtResult.setText("result：" + data);
-                        Logger.mlj("result=" + data);
-                    }
-
-                    @Override
-                    public void onFailed(String errorMsg) {
-                        Logger.mlj("errorMsg=" + errorMsg);
-                    }
-                });
+                @Override
+                public void onFailed(String errorMsg) {
+                    Logger.mlj("errorMsg=" + errorMsg);
+                }
+            });
             }
         });
 
