@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HttpModule.iml" filepath="$PROJECT_DIR$/HttpModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hotFixLib/hotFixLib.iml" filepath="$PROJECT_DIR$/hotFixLib/hotFixLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpLib/httpLib.iml" filepath="$PROJECT_DIR$/httpLib/httpLib.iml" />
     </modules>
   </component>
