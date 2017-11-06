@@ -39,7 +39,6 @@ public class ActionImpl implements AppAction {
                 mHttpAsyncTask.execute();
             }
         });
-
     }
 
     @Override

@@ -1,17 +1,12 @@
 package com.base.http.http;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 
 import com.base.http.api.Api;
 import com.base.http.api.ApiImpl;
 import com.base.http.app.ActionCallback;
-import com.base.http.app.DownloadCallback;
-import com.base.http.base.BaseProfile;
 import com.base.http.entity.ApiResponse;
+import com.base.http.entity.DownloadResult;
 import com.base.http.util.CommonUtil;
 import com.base.http.util.Logger;
 
@@ -21,6 +16,8 @@ import com.base.http.util.Logger;
  */
 
 public class HttpAsyncTask extends AsyncTask<Void, Void, ApiResponse>{
+    private static final String TAG = HttpAsyncTask.class.getSimpleName();
+
     private static final String POST = "POST";
     private static final String GET = "GET";
     private static final String DOWNLOAD = "DOWNLOAD";
@@ -44,6 +41,7 @@ public class HttpAsyncTask extends AsyncTask<Void, Void, ApiResponse>{
     private ApiResponse executeGetRequest(){
         return api.getRequest(requestParams);
     }
+
     //下载请求
     private ApiResponse executeDownload(){
         return api.downloadRequest(requestParams);
@@ -67,7 +65,6 @@ public class HttpAsyncTask extends AsyncTask<Void, Void, ApiResponse>{
 
         }else if(requestParams.getAction().equals(DOWNLOAD)){
             return executeDownload();
-
         }
         return null;
     }
@@ -83,8 +80,13 @@ public class HttpAsyncTask extends AsyncTask<Void, Void, ApiResponse>{
      * @param callback
      */
     private void postExecute(ApiResponse response, ActionCallback callback){
-        if (response != null && response.getCode() == ResultEnum.SUCCESS.getCode()) {
-            callback.onSuccess(response.getData());
+        Logger.d(TAG,"response=" + response + ",callback=" + callback);
+
+        if(response == null || callback == null){
+            return;
+        }
+        if (response.getCode() == ResultEnum.SUCCESS.getCode()) {
+             callback.onSuccess(response.getData());
         } else {
             callback.onFailed( ResultEnum.FAILED.getMsg());
         }

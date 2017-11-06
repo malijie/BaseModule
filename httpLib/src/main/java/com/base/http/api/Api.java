@@ -2,6 +2,7 @@ package com.base.http.api;
 
 
 import com.base.http.entity.ApiResponse;
+import com.base.http.entity.DownloadResult;
 import com.base.http.http.RequestParams;
 
 /**

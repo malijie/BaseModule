@@ -1,14 +1,21 @@
 package com.base.http.http;
 
+import android.os.Environment;
+
+import com.base.http.entity.ApiResponse;
+import com.base.http.entity.DownloadResult;
 import com.base.http.util.Logger;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,10 +128,74 @@ public class HttpEngine {
     }
 
 
-    public void handleDownload(RequestParams params){
+    public ApiResponse handleDownload(RequestParams params){
+        ApiResponse<DownloadResult> apiResponse = null;
+        String urlStr = "http://101.95.48.97:8005/res/upload/interface/apptutorials/manualstypeico/6f83ce8f-0da5-49b3-bac8-fd5fc67d2725.png";
+        String downloadPath = Environment.getExternalStorageDirectory() +  File.separator + "download" + File.separator +  "andfix";
+        try {
+            URL url = new URL(urlStr);
+            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+            //设置超时间为3秒
+            conn.setConnectTimeout(3*1000);
+            //防止屏蔽程序抓取而返回403错误
+            conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
 
+            //得到输入流
+            InputStream inputStream = conn.getInputStream();
+            //获取自己数组
+            byte[] getData = readInputStream(inputStream);
+
+            //文件保存位置
+            File saveDir = new File(downloadPath);
+            if(!saveDir.exists()){
+                saveDir.mkdir();
+            }
+            File file = new File(saveDir+File.separator+"test.png");
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(getData);
+            if(fos!=null){
+                fos.close();
+            }
+
+            apiResponse = new ApiResponse<DownloadResult>(1,"download success",null);
+
+            if(inputStream!=null){
+                inputStream.close();
+            }
+        } catch (MalformedURLException e) {
+            apiResponse = new ApiResponse<DownloadResult>(-1,"download failed",null);
+            e.printStackTrace();
+        } catch (IOException e) {
+            apiResponse = new ApiResponse<DownloadResult>(-1,"download failed",null);
+            e.printStackTrace();
+        }
+        return apiResponse;
     }
 
+//    private DownloadResult getFailedInfo(){
+//        DownloadResult downloadResult = new DownloadResult();
+//        downloadResult.setCode(-1);
+//        downloadResult.setMsg("download failed");
+//        downloadResult.setData(null);
+//        return downloadResult;
+//    }
+
+    /**
+     * 从输入流中获取字节数组
+     * @param inputStream
+     * @return
+     * @throws IOException
+     */
+    public static  byte[] readInputStream(InputStream inputStream) throws IOException {
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        while((len = inputStream.read(buffer)) != -1) {
+            bos.write(buffer, 0, len);
+        }
+        bos.close();
+        return bos.toByteArray();
+    }
     /**
      * 假数据，用于测试
      * @param url

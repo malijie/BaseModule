@@ -1,6 +1,7 @@
 package com.base.http.api;
 
 import com.base.http.entity.ApiResponse;
+import com.base.http.entity.DownloadResult;
 import com.base.http.http.HttpEngine;
 import com.base.http.http.RequestParams;
 import com.base.http.http.ResultEnum;
@@ -45,7 +46,8 @@ public class ApiImpl implements Api {
 
     @Override
     public ApiResponse downloadRequest(RequestParams params) {
-
-        return null;
+        ApiResponse result = HttpEngine.getInstance().handleDownload(params);
+        Logger.d(TAG,"downloadRequest result = " + result);
+        return result;
     }
 }
